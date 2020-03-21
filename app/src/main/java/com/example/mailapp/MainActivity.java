@@ -4,10 +4,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.FrameLayout;
 //import android.widget.Toolbar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
 public class MainActivity extends AppCompatActivity implements MailListFragment.MailListListener {
     private Toolbar toolbar;
 
@@ -33,7 +37,9 @@ public class MainActivity extends AppCompatActivity implements MailListFragment.
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction().add(R.id.flMailDetail, fragment).commit();
         }
-
+        SharedPreferences preferences=getSharedPreferences("MYPREFS", MODE_PRIVATE);
+        String display=preferences.getString("display","");
+        
     }
 
 
